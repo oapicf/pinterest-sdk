@@ -1,4 +1,4 @@
-<img align="right" src="https://raw.github.com/oapicf/pinterest-sdk/master/avatar.jpg" alt="Avatar"/>
+<img align="right" src="https://raw.github.com/oapicf/pinterest-sdk/main/avatar.jpg" alt="Avatar"/>
 
 [![Build Status](https://github.com/oapicf/pinterest-sdk/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/oapicf/pinterest-sdk/actions/workflows/ci-workflow.yaml)
 <br/>
