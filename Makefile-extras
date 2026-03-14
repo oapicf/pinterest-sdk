@@ -1,0 +1,14 @@
+
+# Disabled Javascript build
+# due to https://github.com/oapicf/pinterest-sdk/issues/2
+# and further issues
+x-build-javascript:
+	npm install -g babel-cli
+# 	cd clients/javascript/generated/ && \
+# 	  npm install && \
+# 	  npm link && \
+# 	  npm run build
+# 	cd test/javascript/ && \
+# 	  npm link ../../clients/javascript/generated/
+
+.PHONY: x-build-javascript

@@ -176,19 +176,8 @@ generate-primary:
 ################################################################
 # API clients building targets for primary generators
 
-build-javascript: x-build-javascript
-
-# Disabled Javascript build
-# due to https://github.com/oapicf/pinterest-sdk/issues/2
-# and further issues
-x-build-javascript:
-	npm install -g babel-cli
-# 	cd clients/javascript/generated/ && \
-# 	  npm install && \
-# 	  npm link && \
-# 	  npm run build
-# 	cd test/javascript/ && \
-# 	  npm link ../../clients/javascript/generated/
+build-javascript:
+	make -f Makefile-extras x-build-javascript
 
 build-python:
 	cd clients/python/generated/ && \
