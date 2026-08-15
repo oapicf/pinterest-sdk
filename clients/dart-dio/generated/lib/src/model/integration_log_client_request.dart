@@ -1,0 +1,227 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+
+// ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+
+part 'integration_log_client_request.g.dart';
+
+/// HTTP request details included in the log sent by the client.
+///
+/// Properties:
+/// * [host] - HTTP request host from host header.
+/// * [method] 
+/// * [path] - HTTP request path.
+/// * [requestHeaders] - HTTP request headers as key-value pairs.
+/// * [responseHeaders] - HTTP response headers as key-value pairs.
+/// * [responseStatusCode] 
+@BuiltValue()
+abstract class IntegrationLogClientRequest implements Built<IntegrationLogClientRequest, IntegrationLogClientRequestBuilder> {
+  /// HTTP request host from host header.
+  @BuiltValueField(wireName: r'host')
+  String get host;
+
+  @BuiltValueField(wireName: r'method')
+  IntegrationLogClientRequestMethodEnum get method;
+  // enum methodEnum {  GET,  HEAD,  POST,  PUT,  DELETE,  CONNECT,  OPTIONS,  TRACE,  PATCH,  };
+
+  /// HTTP request path.
+  @BuiltValueField(wireName: r'path')
+  String get path;
+
+  /// HTTP request headers as key-value pairs.
+  @BuiltValueField(wireName: r'request_headers')
+  BuiltMap<String, String>? get requestHeaders;
+
+  /// HTTP response headers as key-value pairs.
+  @BuiltValueField(wireName: r'response_headers')
+  BuiltMap<String, String>? get responseHeaders;
+
+  @BuiltValueField(wireName: r'response_status_code')
+  int? get responseStatusCode;
+
+  IntegrationLogClientRequest._();
+
+  factory IntegrationLogClientRequest([void updates(IntegrationLogClientRequestBuilder b)]) = _$IntegrationLogClientRequest;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(IntegrationLogClientRequestBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<IntegrationLogClientRequest> get serializer => _$IntegrationLogClientRequestSerializer();
+}
+
+class _$IntegrationLogClientRequestSerializer implements PrimitiveSerializer<IntegrationLogClientRequest> {
+  @override
+  final Iterable<Type> types = const [IntegrationLogClientRequest, _$IntegrationLogClientRequest];
+
+  @override
+  final String wireName = r'IntegrationLogClientRequest';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    IntegrationLogClientRequest object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    yield r'host';
+    yield serializers.serialize(
+      object.host,
+      specifiedType: const FullType(String),
+    );
+    yield r'method';
+    yield serializers.serialize(
+      object.method,
+      specifiedType: const FullType(IntegrationLogClientRequestMethodEnum),
+    );
+    yield r'path';
+    yield serializers.serialize(
+      object.path,
+      specifiedType: const FullType(String),
+    );
+    if (object.requestHeaders != null) {
+      yield r'request_headers';
+      yield serializers.serialize(
+        object.requestHeaders,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+      );
+    }
+    if (object.responseHeaders != null) {
+      yield r'response_headers';
+      yield serializers.serialize(
+        object.responseHeaders,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+      );
+    }
+    if (object.responseStatusCode != null) {
+      yield r'response_status_code';
+      yield serializers.serialize(
+        object.responseStatusCode,
+        specifiedType: const FullType(int),
+      );
+    }
+  }
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    IntegrationLogClientRequest object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required IntegrationLogClientRequestBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'host':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.host = valueDes;
+          break;
+        case r'method':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(IntegrationLogClientRequestMethodEnum),
+          ) as IntegrationLogClientRequestMethodEnum;
+          result.method = valueDes;
+          break;
+        case r'path':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.path = valueDes;
+          break;
+        case r'request_headers':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+          ) as BuiltMap<String, String>;
+          result.requestHeaders.replace(valueDes);
+          break;
+        case r'response_headers':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+          ) as BuiltMap<String, String>;
+          result.responseHeaders.replace(valueDes);
+          break;
+        case r'response_status_code':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.responseStatusCode = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  IntegrationLogClientRequest deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = IntegrationLogClientRequestBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
+}
+
+class IntegrationLogClientRequestMethodEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'GET')
+  static const IntegrationLogClientRequestMethodEnum GET = _$integrationLogClientRequestMethodEnum_GET;
+  @BuiltValueEnumConst(wireName: r'HEAD')
+  static const IntegrationLogClientRequestMethodEnum HEAD = _$integrationLogClientRequestMethodEnum_HEAD;
+  @BuiltValueEnumConst(wireName: r'POST')
+  static const IntegrationLogClientRequestMethodEnum POST = _$integrationLogClientRequestMethodEnum_POST;
+  @BuiltValueEnumConst(wireName: r'PUT')
+  static const IntegrationLogClientRequestMethodEnum PUT = _$integrationLogClientRequestMethodEnum_PUT;
+  @BuiltValueEnumConst(wireName: r'DELETE')
+  static const IntegrationLogClientRequestMethodEnum DELETE = _$integrationLogClientRequestMethodEnum_DELETE;
+  @BuiltValueEnumConst(wireName: r'CONNECT')
+  static const IntegrationLogClientRequestMethodEnum CONNECT = _$integrationLogClientRequestMethodEnum_CONNECT;
+  @BuiltValueEnumConst(wireName: r'OPTIONS')
+  static const IntegrationLogClientRequestMethodEnum OPTIONS = _$integrationLogClientRequestMethodEnum_OPTIONS;
+  @BuiltValueEnumConst(wireName: r'TRACE')
+  static const IntegrationLogClientRequestMethodEnum TRACE = _$integrationLogClientRequestMethodEnum_TRACE;
+  @BuiltValueEnumConst(wireName: r'PATCH')
+  static const IntegrationLogClientRequestMethodEnum PATCH = _$integrationLogClientRequestMethodEnum_PATCH;
+
+  static Serializer<IntegrationLogClientRequestMethodEnum> get serializer => _$integrationLogClientRequestMethodEnumSerializer;
+
+  const IntegrationLogClientRequestMethodEnum._(String name): super(name);
+
+  static BuiltSet<IntegrationLogClientRequestMethodEnum> get values => _$integrationLogClientRequestMethodEnumValues;
+  static IntegrationLogClientRequestMethodEnum valueOf(String name) => _$integrationLogClientRequestMethodEnumValueOf(name);
+}
+

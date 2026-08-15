@@ -1,0 +1,257 @@
+
+
+#include "AudienceInsightsResponse.h"
+
+using namespace Tiny;
+
+AudienceInsightsResponse::AudienceInsightsResponse()
+{
+	categories = std::list<AudienceCategory>();
+	date = std::string();
+	demographics = AudienceDemographics();
+	size = int(0);
+	size_is_upper_bound = bool(false);
+	type = AudienceInsightType();
+}
+
+AudienceInsightsResponse::AudienceInsightsResponse(std::string jsonString)
+{
+	this->fromJson(jsonString);
+}
+
+AudienceInsightsResponse::~AudienceInsightsResponse()
+{
+
+}
+
+void
+AudienceInsightsResponse::fromJson(std::string jsonObj)
+{
+    bourne::json object = bourne::json::parse(jsonObj);
+
+    const char *categoriesKey = "categories";
+
+    if(object.has_key(categoriesKey))
+    {
+        bourne::json value = object[categoriesKey];
+
+
+        std::list<AudienceCategory> categories_list;
+        AudienceCategory element;
+        for(auto& var : value.array_range())
+        {
+
+
+            element.fromJson(var.dump());
+
+            categories_list.push_back(element);
+        }
+        categories = categories_list;
+
+
+    }
+
+    const char *dateKey = "date";
+
+    if(object.has_key(dateKey))
+    {
+        bourne::json value = object[dateKey];
+
+
+
+        jsonToValue(&date, value, "std::string");
+
+
+    }
+
+    const char *demographicsKey = "demographics";
+
+    if(object.has_key(demographicsKey))
+    {
+        bourne::json value = object[demographicsKey];
+
+
+
+
+        AudienceDemographics* obj = &demographics;
+		obj->fromJson(value.dump());
+
+    }
+
+    const char *sizeKey = "size";
+
+    if(object.has_key(sizeKey))
+    {
+        bourne::json value = object[sizeKey];
+
+
+
+        jsonToValue(&size, value, "int");
+
+
+    }
+
+    const char *size_is_upper_boundKey = "size_is_upper_bound";
+
+    if(object.has_key(size_is_upper_boundKey))
+    {
+        bourne::json value = object[size_is_upper_boundKey];
+
+
+
+        jsonToValue(&size_is_upper_bound, value, "bool");
+
+
+    }
+
+    const char *typeKey = "type";
+
+    if(object.has_key(typeKey))
+    {
+        bourne::json value = object[typeKey];
+
+
+
+
+        AudienceInsightType* obj = &type;
+		obj->fromJson(value.dump());
+
+    }
+
+
+}
+
+bourne::json
+AudienceInsightsResponse::toJson()
+{
+    bourne::json object = bourne::json::object();
+
+
+
+
+    std::list<AudienceCategory> categories_list = getCategories();
+    bourne::json categories_arr = bourne::json::array();
+
+    for(auto& var : categories_list)
+    {
+        AudienceCategory obj = var;
+        categories_arr.append(obj.toJson());
+    }
+    object["categories"] = categories_arr;
+
+
+
+
+
+
+
+    object["date"] = getDate();
+
+
+
+
+
+
+
+	object["demographics"] = getDemographics().toJson();
+
+
+
+
+
+    object["size"] = getSize();
+
+
+
+
+
+
+    object["size_is_upper_bound"] = isSizeIsUpperBound();
+
+
+
+
+
+
+
+	object["type"] = getType().toJson();
+
+
+    return object;
+
+}
+
+std::list<AudienceCategory>
+AudienceInsightsResponse::getCategories()
+{
+	return categories;
+}
+
+void
+AudienceInsightsResponse::setCategories(std::list <AudienceCategory> categories)
+{
+	this->categories = categories;
+}
+
+std::string
+AudienceInsightsResponse::getDate()
+{
+	return date;
+}
+
+void
+AudienceInsightsResponse::setDate(std::string  date)
+{
+	this->date = date;
+}
+
+AudienceDemographics
+AudienceInsightsResponse::getDemographics()
+{
+	return demographics;
+}
+
+void
+AudienceInsightsResponse::setDemographics(AudienceDemographics  demographics)
+{
+	this->demographics = demographics;
+}
+
+int
+AudienceInsightsResponse::getSize()
+{
+	return size;
+}
+
+void
+AudienceInsightsResponse::setSize(int  size)
+{
+	this->size = size;
+}
+
+bool
+AudienceInsightsResponse::isSizeIsUpperBound()
+{
+	return size_is_upper_bound;
+}
+
+void
+AudienceInsightsResponse::setSizeIsUpperBound(bool  size_is_upper_bound)
+{
+	this->size_is_upper_bound = size_is_upper_bound;
+}
+
+AudienceInsightType
+AudienceInsightsResponse::getType()
+{
+	return type;
+}
+
+void
+AudienceInsightsResponse::setType(AudienceInsightType  type)
+{
+	this->type = type;
+}
+
+
+

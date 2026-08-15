@@ -1,0 +1,78 @@
+
+/*
+ * OauthAccessTokenRequestRefresh.h
+ *
+ * 
+ */
+
+#ifndef TINY_CPP_CLIENT_OauthAccessTokenRequestRefresh_H_
+#define TINY_CPP_CLIENT_OauthAccessTokenRequestRefresh_H_
+
+
+#include <string>
+#include "bourne/json.hpp"
+#include "Helpers.h"
+
+namespace Tiny {
+
+
+/*! \brief 
+ *
+ *  \ingroup Models
+ *
+ */
+
+class OauthAccessTokenRequestRefresh{
+public:
+
+    /*! \brief Constructor.
+	 */
+    OauthAccessTokenRequestRefresh();
+    OauthAccessTokenRequestRefresh(std::string jsonString);
+
+
+    /*! \brief Destructor.
+	 */
+    virtual ~OauthAccessTokenRequestRefresh();
+
+
+    /*! \brief Retrieve a bourne JSON representation of this class.
+	 */
+    bourne::json toJson();
+
+
+    /*! \brief Fills in members of this class from bourne JSON object representing it.
+	 */
+    void fromJson(std::string jsonObj);
+
+	/*! \brief Get 
+	 */
+	std::string getRefreshToken();
+
+	/*! \brief Set 
+	 */
+	void setRefreshToken(std::string  refresh_token);
+	/*! \brief Get 
+	 */
+	std::string getScope();
+
+	/*! \brief Set 
+	 */
+	void setScope(std::string  scope);
+	/*! \brief Get 
+	 */
+	std::string getGrantType();
+
+	/*! \brief Set 
+	 */
+	void setGrantType(std::string  grant_type);
+
+
+    private:
+    std::string refresh_token{};
+    std::string scope{};
+    std::string grant_type{};
+};
+}
+
+#endif /* TINY_CPP_CLIENT_OauthAccessTokenRequestRefresh_H_ */

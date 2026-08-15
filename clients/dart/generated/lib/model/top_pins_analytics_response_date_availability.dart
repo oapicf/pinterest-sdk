@@ -1,0 +1,135 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+class TopPinsAnalyticsResponseDateAvailability {
+  /// Returns a new [TopPinsAnalyticsResponseDateAvailability] instance.
+  TopPinsAnalyticsResponseDateAvailability({
+    this.isRealtime,
+    this.latestAvailableTimestamp,
+  });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isRealtime;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? latestAvailableTimestamp;
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is TopPinsAnalyticsResponseDateAvailability &&
+    other.isRealtime == isRealtime &&
+    other.latestAvailableTimestamp == latestAvailableTimestamp;
+
+  @override
+  int get hashCode =>
+    // ignore: unnecessary_parenthesis
+    (isRealtime == null ? 0 : isRealtime!.hashCode) +
+    (latestAvailableTimestamp == null ? 0 : latestAvailableTimestamp!.hashCode);
+
+  @override
+  String toString() => 'TopPinsAnalyticsResponseDateAvailability[isRealtime=$isRealtime, latestAvailableTimestamp=$latestAvailableTimestamp]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (this.isRealtime != null) {
+      json[r'is_realtime'] = this.isRealtime;
+    } else {
+      json[r'is_realtime'] = null;
+    }
+    if (this.latestAvailableTimestamp != null) {
+      json[r'latest_available_timestamp'] = this.latestAvailableTimestamp;
+    } else {
+      json[r'latest_available_timestamp'] = null;
+    }
+    return json;
+  }
+
+  /// Returns a new [TopPinsAnalyticsResponseDateAvailability] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static TopPinsAnalyticsResponseDateAvailability? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "TopPinsAnalyticsResponseDateAvailability[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "TopPinsAnalyticsResponseDateAvailability[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return TopPinsAnalyticsResponseDateAvailability(
+        isRealtime: mapValueOfType<bool>(json, r'is_realtime'),
+        latestAvailableTimestamp: num.parse('${json[r'latest_available_timestamp']}'),
+      );
+    }
+    return null;
+  }
+
+  static List<TopPinsAnalyticsResponseDateAvailability> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <TopPinsAnalyticsResponseDateAvailability>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = TopPinsAnalyticsResponseDateAvailability.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+
+  static Map<String, TopPinsAnalyticsResponseDateAvailability> mapFromJson(dynamic json) {
+    final map = <String, TopPinsAnalyticsResponseDateAvailability>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = TopPinsAnalyticsResponseDateAvailability.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of TopPinsAnalyticsResponseDateAvailability-objects as value to a dart map
+  static Map<String, List<TopPinsAnalyticsResponseDateAvailability>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<TopPinsAnalyticsResponseDateAvailability>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = TopPinsAnalyticsResponseDateAvailability.listFromJson(entry.value, growable: growable,);
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+  };
+}
+

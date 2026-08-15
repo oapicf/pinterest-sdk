@@ -1,0 +1,123 @@
+
+
+#include "Ad_accounts_audiences_shared_accounts_list_200_response.h"
+
+using namespace Tiny;
+
+Ad_accounts_audiences_shared_accounts_list_200_response::Ad_accounts_audiences_shared_accounts_list_200_response()
+{
+	bookmark = std::string();
+	items = std::list<SharedAudienceAccount>();
+}
+
+Ad_accounts_audiences_shared_accounts_list_200_response::Ad_accounts_audiences_shared_accounts_list_200_response(std::string jsonString)
+{
+	this->fromJson(jsonString);
+}
+
+Ad_accounts_audiences_shared_accounts_list_200_response::~Ad_accounts_audiences_shared_accounts_list_200_response()
+{
+
+}
+
+void
+Ad_accounts_audiences_shared_accounts_list_200_response::fromJson(std::string jsonObj)
+{
+    bourne::json object = bourne::json::parse(jsonObj);
+
+    const char *bookmarkKey = "bookmark";
+
+    if(object.has_key(bookmarkKey))
+    {
+        bourne::json value = object[bookmarkKey];
+
+
+
+        jsonToValue(&bookmark, value, "std::string");
+
+
+    }
+
+    const char *itemsKey = "items";
+
+    if(object.has_key(itemsKey))
+    {
+        bourne::json value = object[itemsKey];
+
+
+        std::list<SharedAudienceAccount> items_list;
+        SharedAudienceAccount element;
+        for(auto& var : value.array_range())
+        {
+
+
+            element.fromJson(var.dump());
+
+            items_list.push_back(element);
+        }
+        items = items_list;
+
+
+    }
+
+
+}
+
+bourne::json
+Ad_accounts_audiences_shared_accounts_list_200_response::toJson()
+{
+    bourne::json object = bourne::json::object();
+
+
+
+
+
+    object["bookmark"] = getBookmark();
+
+
+
+
+
+    std::list<SharedAudienceAccount> items_list = getItems();
+    bourne::json items_arr = bourne::json::array();
+
+    for(auto& var : items_list)
+    {
+        SharedAudienceAccount obj = var;
+        items_arr.append(obj.toJson());
+    }
+    object["items"] = items_arr;
+
+
+
+
+    return object;
+
+}
+
+std::string
+Ad_accounts_audiences_shared_accounts_list_200_response::getBookmark()
+{
+	return bookmark;
+}
+
+void
+Ad_accounts_audiences_shared_accounts_list_200_response::setBookmark(std::string  bookmark)
+{
+	this->bookmark = bookmark;
+}
+
+std::list<SharedAudienceAccount>
+Ad_accounts_audiences_shared_accounts_list_200_response::getItems()
+{
+	return items;
+}
+
+void
+Ad_accounts_audiences_shared_accounts_list_200_response::setItems(std::list <SharedAudienceAccount> items)
+{
+	this->items = items;
+}
+
+
+

@@ -1,0 +1,163 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+
+// ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/model/targeting_spec_operation_list.dart';
+import 'package:openapi/src/model/targeting_spec_app_type.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+
+part 'targeting_spec_operation_app_type.g.dart';
+
+/// TargetingSpecOperationAppType
+///
+/// Properties:
+/// * [field] 
+/// * [operation] 
+/// * [values] 
+@BuiltValue()
+abstract class TargetingSpecOperationAppType implements TargetingSpecOperationList, Built<TargetingSpecOperationAppType, TargetingSpecOperationAppTypeBuilder> {
+  TargetingSpecOperationAppType._();
+
+  factory TargetingSpecOperationAppType([void updates(TargetingSpecOperationAppTypeBuilder b)]) = _$TargetingSpecOperationAppType;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(TargetingSpecOperationAppTypeBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<TargetingSpecOperationAppType> get serializer => _$TargetingSpecOperationAppTypeSerializer();
+}
+
+class _$TargetingSpecOperationAppTypeSerializer implements PrimitiveSerializer<TargetingSpecOperationAppType> {
+  @override
+  final Iterable<Type> types = const [TargetingSpecOperationAppType, _$TargetingSpecOperationAppType];
+
+  @override
+  final String wireName = r'TargetingSpecOperationAppType';
+
+  Iterable<Object?> _serializeProperties(
+    Serializers serializers,
+    TargetingSpecOperationAppType object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
+    yield r'field';
+    yield serializers.serialize(
+      object.field,
+      specifiedType: const FullType(String),
+    );
+    yield r'operation';
+    yield serializers.serialize(
+      object.operation,
+      specifiedType: const FullType(TargetingSpecOperationListOperationEnum),
+    );
+    yield r'values';
+    yield object.values == null ? null : serializers.serialize(
+      object.values,
+      specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+    );
+  }
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    TargetingSpecOperationAppType object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required TargetingSpecOperationAppTypeBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'field':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.field = valueDes;
+          break;
+        case r'operation':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(TargetingSpecOperationListOperationEnum),
+          ) as TargetingSpecOperationListOperationEnum;
+          result.operation = valueDes;
+          break;
+        case r'values':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
+          result.values.replace(valueDes);
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  TargetingSpecOperationAppType deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = TargetingSpecOperationAppTypeBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
+    return result.build();
+  }
+}
+
+class TargetingSpecOperationAppTypeFieldEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'APPTYPE')
+  static const TargetingSpecOperationAppTypeFieldEnum APPTYPE = _$targetingSpecOperationAppTypeFieldEnum_APPTYPE;
+
+  static Serializer<TargetingSpecOperationAppTypeFieldEnum> get serializer => _$targetingSpecOperationAppTypeFieldEnumSerializer;
+
+  const TargetingSpecOperationAppTypeFieldEnum._(String name): super(name);
+
+  static BuiltSet<TargetingSpecOperationAppTypeFieldEnum> get values => _$targetingSpecOperationAppTypeFieldEnumValues;
+  static TargetingSpecOperationAppTypeFieldEnum valueOf(String name) => _$targetingSpecOperationAppTypeFieldEnumValueOf(name);
+}
+
+class TargetingSpecOperationAppTypeOperationEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'SET')
+  static const TargetingSpecOperationAppTypeOperationEnum SET = _$targetingSpecOperationAppTypeOperationEnum_SET;
+  @BuiltValueEnumConst(wireName: r'ADD')
+  static const TargetingSpecOperationAppTypeOperationEnum ADD = _$targetingSpecOperationAppTypeOperationEnum_ADD;
+  @BuiltValueEnumConst(wireName: r'REMOVE')
+  static const TargetingSpecOperationAppTypeOperationEnum REMOVE = _$targetingSpecOperationAppTypeOperationEnum_REMOVE;
+
+  static Serializer<TargetingSpecOperationAppTypeOperationEnum> get serializer => _$targetingSpecOperationAppTypeOperationEnumSerializer;
+
+  const TargetingSpecOperationAppTypeOperationEnum._(String name): super(name);
+
+  static BuiltSet<TargetingSpecOperationAppTypeOperationEnum> get values => _$targetingSpecOperationAppTypeOperationEnumValues;
+  static TargetingSpecOperationAppTypeOperationEnum valueOf(String name) => _$targetingSpecOperationAppTypeOperationEnumValueOf(name);
+}
+

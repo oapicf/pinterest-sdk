@@ -1,0 +1,134 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+class TopPinsAnalyticsResponsePinsInner {
+  /// Returns a new [TopPinsAnalyticsResponsePinsInner] instance.
+  TopPinsAnalyticsResponsePinsInner({
+    this.dataStatus = const {},
+    this.metrics = const {},
+    this.pinId,
+  });
+
+  Map<String, DataStatus> dataStatus;
+
+  /// The metric name and daily value for each requested metric
+  Map<String, num> metrics;
+
+  /// The pin id
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? pinId;
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is TopPinsAnalyticsResponsePinsInner &&
+    _deepEquality.equals(other.dataStatus, dataStatus) &&
+    _deepEquality.equals(other.metrics, metrics) &&
+    other.pinId == pinId;
+
+  @override
+  int get hashCode =>
+    // ignore: unnecessary_parenthesis
+    (dataStatus.hashCode) +
+    (metrics.hashCode) +
+    (pinId == null ? 0 : pinId!.hashCode);
+
+  @override
+  String toString() => 'TopPinsAnalyticsResponsePinsInner[dataStatus=$dataStatus, metrics=$metrics, pinId=$pinId]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+      json[r'data_status'] = this.dataStatus;
+      json[r'metrics'] = this.metrics;
+    if (this.pinId != null) {
+      json[r'pin_id'] = this.pinId;
+    } else {
+      json[r'pin_id'] = null;
+    }
+    return json;
+  }
+
+  /// Returns a new [TopPinsAnalyticsResponsePinsInner] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static TopPinsAnalyticsResponsePinsInner? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "TopPinsAnalyticsResponsePinsInner[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "TopPinsAnalyticsResponsePinsInner[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return TopPinsAnalyticsResponsePinsInner(
+        dataStatus: DataStatus.mapFromJson(json[r'data_status']),
+        metrics: mapCastOfType<String, num>(json, r'metrics') ?? const {},
+        pinId: mapValueOfType<String>(json, r'pin_id'),
+      );
+    }
+    return null;
+  }
+
+  static List<TopPinsAnalyticsResponsePinsInner> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <TopPinsAnalyticsResponsePinsInner>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = TopPinsAnalyticsResponsePinsInner.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+
+  static Map<String, TopPinsAnalyticsResponsePinsInner> mapFromJson(dynamic json) {
+    final map = <String, TopPinsAnalyticsResponsePinsInner>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = TopPinsAnalyticsResponsePinsInner.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of TopPinsAnalyticsResponsePinsInner-objects as value to a dart map
+  static Map<String, List<TopPinsAnalyticsResponsePinsInner>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<TopPinsAnalyticsResponsePinsInner>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = TopPinsAnalyticsResponsePinsInner.listFromJson(entry.value, growable: growable,);
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+  };
+}
+

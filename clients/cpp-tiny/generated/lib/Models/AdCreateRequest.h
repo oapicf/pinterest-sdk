@@ -1,0 +1,238 @@
+
+/*
+ * AdCreateRequest.h
+ *
+ * 
+ */
+
+#ifndef TINY_CPP_CLIENT_AdCreateRequest_H_
+#define TINY_CPP_CLIENT_AdCreateRequest_H_
+
+
+#include <string>
+#include "bourne/json.hpp"
+#include "Helpers.h"
+#include "CreativeType.h"
+#include "CustomizableCTAType.h"
+#include "DisclosureType.h"
+#include "EntityStatus.h"
+#include "GridClickType.h"
+#include "QuizPinData.h"
+#include "TrackingUrls.h"
+#include <list>
+
+namespace Tiny {
+
+
+/*! \brief 
+ *
+ *  \ingroup Models
+ *
+ */
+
+class AdCreateRequest{
+public:
+
+    /*! \brief Constructor.
+	 */
+    AdCreateRequest();
+    AdCreateRequest(std::string jsonString);
+
+
+    /*! \brief Destructor.
+	 */
+    virtual ~AdCreateRequest();
+
+
+    /*! \brief Retrieve a bourne JSON representation of this class.
+	 */
+    bourne::json toJson();
+
+
+    /*! \brief Fills in members of this class from bourne JSON object representing it.
+	 */
+    void fromJson(std::string jsonObj);
+
+	/*! \brief Get ID of the ad group that contains the ad.
+	 */
+	std::string getAdGroupId();
+
+	/*! \brief Set ID of the ad group that contains the ad.
+	 */
+	void setAdGroupId(std::string  ad_group_id);
+	/*! \brief Get Deep link URL for Android devices.
+	 */
+	std::string getAndroidDeepLink();
+
+	/*! \brief Set Deep link URL for Android devices.
+	 */
+	void setAndroidDeepLink(std::string  android_deep_link);
+	/*! \brief Get Comma-separated deep links for the carousel pin on Android.
+	 */
+	std::list<std::string> getCarouselAndroidDeepLinks();
+
+	/*! \brief Set Comma-separated deep links for the carousel pin on Android.
+	 */
+	void setCarouselAndroidDeepLinks(std::list <std::string> carousel_android_deep_links);
+	/*! \brief Get Comma-separated destination URLs for the carousel pin to promote.
+	 */
+	std::list<std::string> getCarouselDestinationUrls();
+
+	/*! \brief Set Comma-separated destination URLs for the carousel pin to promote.
+	 */
+	void setCarouselDestinationUrls(std::list <std::string> carousel_destination_urls);
+	/*! \brief Get Comma-separated deep links for the carousel pin on iOS.
+	 */
+	std::list<std::string> getCarouselIosDeepLinks();
+
+	/*! \brief Set Comma-separated deep links for the carousel pin on iOS.
+	 */
+	void setCarouselIosDeepLinks(std::list <std::string> carousel_ios_deep_links);
+	/*! \brief Get Tracking url for the ad clicks.
+	 */
+	std::string getClickTrackingUrl();
+
+	/*! \brief Set Tracking url for the ad clicks.
+	 */
+	void setClickTrackingUrl(std::string  click_tracking_url);
+	/*! \brief Get 
+	 */
+	CreativeType getCreativeType();
+
+	/*! \brief Set 
+	 */
+	void setCreativeType(CreativeType  creative_type);
+	/*! \brief Get 
+	 */
+	CustomizableCTAType getCustomizableCtaType();
+
+	/*! \brief Set 
+	 */
+	void setCustomizableCtaType(CustomizableCTAType  customizable_cta_type);
+	/*! \brief Get Destination URL.
+	 */
+	std::string getDestinationUrl();
+
+	/*! \brief Set Destination URL.
+	 */
+	void setDestinationUrl(std::string  destination_url);
+	/*! \brief Get 
+	 */
+	DisclosureType getDisclosureType();
+
+	/*! \brief Set 
+	 */
+	void setDisclosureType(DisclosureType  disclosure_type);
+	/*! \brief Get URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+	 */
+	std::string getDisclosureUrl();
+
+	/*! \brief Set URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+	 */
+	void setDisclosureUrl(std::string  disclosure_url);
+	/*! \brief Get 
+	 */
+	GridClickType getGridClickType();
+
+	/*! \brief Set 
+	 */
+	void setGridClickType(GridClickType  grid_click_type);
+	/*! \brief Get Deep link URL for iOS devices.
+	 */
+	std::string getIosDeepLink();
+
+	/*! \brief Set Deep link URL for iOS devices.
+	 */
+	void setIosDeepLink(std::string  ios_deep_link);
+	/*! \brief Get Is original pin deleted?
+	 */
+	bool isIsPinDeleted();
+
+	/*! \brief Set Is original pin deleted?
+	 */
+	void setIsPinDeleted(bool  is_pin_deleted);
+	/*! \brief Get Is pin repinnable?
+	 */
+	bool isIsRemovable();
+
+	/*! \brief Set Is pin repinnable?
+	 */
+	void setIsRemovable(bool  is_removable);
+	/*! \brief Get Lead form ID for lead ad generation.
+	 */
+	std::string getLeadFormId();
+
+	/*! \brief Set Lead form ID for lead ad generation.
+	 */
+	void setLeadFormId(std::string  lead_form_id);
+	/*! \brief Get Name of the ad - 255 chars max.
+	 */
+	std::string getName();
+
+	/*! \brief Set Name of the ad - 255 chars max.
+	 */
+	void setName(std::string  name);
+	/*! \brief Get Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+	 */
+	QuizPinData getQuizPinData();
+
+	/*! \brief Set Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+	 */
+	void setQuizPinData(QuizPinData  quiz_pin_data);
+	/*! \brief Get 
+	 */
+	EntityStatus getStatus();
+
+	/*! \brief Set 
+	 */
+	void setStatus(EntityStatus  status);
+	/*! \brief Get 
+	 */
+	TrackingUrls getTrackingUrls();
+
+	/*! \brief Set 
+	 */
+	void setTrackingUrls(TrackingUrls  tracking_urls);
+	/*! \brief Get Tracking URL for ad impressions.
+	 */
+	std::string getViewTrackingUrl();
+
+	/*! \brief Set Tracking URL for ad impressions.
+	 */
+	void setViewTrackingUrl(std::string  view_tracking_url);
+	/*! \brief Get Pin ID.
+	 */
+	std::string getPinId();
+
+	/*! \brief Set Pin ID.
+	 */
+	void setPinId(std::string  pin_id);
+
+
+    private:
+    std::string ad_group_id{};
+    std::string android_deep_link{};
+    std::list<std::string> carousel_android_deep_links;
+    std::list<std::string> carousel_destination_urls;
+    std::list<std::string> carousel_ios_deep_links;
+    std::string click_tracking_url{};
+    CreativeType creative_type;
+    CustomizableCTAType customizable_cta_type;
+    std::string destination_url{};
+    DisclosureType disclosure_type;
+    std::string disclosure_url{};
+    GridClickType grid_click_type;
+    std::string ios_deep_link{};
+    bool is_pin_deleted{};
+    bool is_removable{};
+    std::string lead_form_id{};
+    std::string name{};
+    QuizPinData quiz_pin_data;
+    EntityStatus status;
+    TrackingUrls tracking_urls;
+    std::string view_tracking_url{};
+    std::string pin_id{};
+};
+}
+
+#endif /* TINY_CPP_CLIENT_AdCreateRequest_H_ */
