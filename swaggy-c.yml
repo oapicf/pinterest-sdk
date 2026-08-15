@@ -14,3 +14,15 @@ base_dir:
   local: /Users/cliffano/dev/workspace-oapicf/pinterest-sdk
   custom: >-
     /home/runner/work/generator-openapi-generator/generator-openapi-generator/stage/pinterest-sdk/
+generator:
+  component: oag-url-spec
+  inputs:
+    project_id: pinterest-sdk
+    project_name: Pinterest SDK
+    project_desc: A set of generated client libraries for Pinterest REST API from their OpenAPI v3 specification
+    author_name: OpenAPI Clients Factory
+    author_email: blah+oapicf@cliffano.com
+    author_url: https://github.com/oapicf
+    github_id: oapicf
+    github_repo: pinterest-sdk
+    github_token_prefix: OAPICF

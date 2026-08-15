@@ -1,10 +1,9 @@
 <!-- BEGIN:AVATAR -->
-<img align="right" src="https://raw.github.com/oapicf/pinterest-sdk/main/avatar.jpg" alt="Avatar"/>
+![Avatar](avatar.jpg)
 <!-- END:AVATAR -->
 
 <!-- BEGIN:BADGES -->
 [![Build Status](https://github.com/oapicf/pinterest-sdk/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/oapicf/pinterest-sdk/actions/workflows/ci-workflow.yaml)
-<br/>
 <!-- END:BADGES -->
 
 # Pinterest SDK
