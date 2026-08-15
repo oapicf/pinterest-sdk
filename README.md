@@ -55,6 +55,10 @@ gem install pinterest_sdk
 
 ## Colophon
 
+<!-- BEGIN:DEVELOPERS_GUIDE -->
+[Developer's Guide](https://oapicf.github.io/developers-guide-openapi-generator.html)
+<!-- END:DEVELOPERS_GUIDE -->
+
 <!-- BEGIN:BUILD_REPORTS -->
 * [API Documentation](https://oapicf.github.io/pinterest-sdk/api/latest/)
 <!-- END:BUILD_REPORTS -->
