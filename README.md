@@ -24,6 +24,7 @@ The client libraries are generated using [OpenAPI Generator](https://openapi-gen
 
 | Pinterest SDK Version | Pinterest OpenAPI Spec Version | OpenAPI Version | OpenAPI Generator Version |
 |-----------------------|--------------------------------|-----------------|---------------------------|
+| 2.1.0 | 5.28.0 | 3.0.3 | 7.24.0 |
 | 2.0.0 | 5.23.0 | 3.0.3 | 7.18.0 |
 | 1.2.0 | 5.4.1 | 3.0.3 | 6.0.1 |
 | 1.1.0 | 5.3.0 | 3.0.3 | 5.4.0 |

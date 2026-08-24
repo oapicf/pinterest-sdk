@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Upgrade Swaggy C to 6.2.2
 - Upgrade OpenAPI Generator to 7.24.0
+- Upgrade Pinterest API spec to 5.28.0
 
 ## 2.0.0 - 2026-01-31
 ### Added
