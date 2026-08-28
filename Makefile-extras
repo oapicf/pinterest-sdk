@@ -11,4 +11,14 @@ x-build-javascript:
 # 	cd test/javascript/ && \
 # 	  npm link ../../clients/javascript/generated/
 
-.PHONY: x-build-javascript
+
+# Pinterest's spec omits `items` on AdsAnalyticsCreateAsyncRequest.campaign_objective_types
+# (a `type: array` property with no items schema), which openapi-generator's spec
+# validation rejects with "attribute ...campaign_objective_types.items is missing".
+# The property name and description (WEB_SESSIONS etc.) match the existing
+# CampaignObjectiveType enum used elsewhere in the spec for the singular field, so
+# that's what's filled in here.
+x-post-init-spec:
+	yq -i '.components.schemas.AdsAnalyticsCreateAsyncRequest.properties.campaign_objective_types.items = {"$$ref": "#/components/schemas/CampaignObjectiveType"}' stage/specification.yml
+
+.PHONY: x-build-javascript x-post-init-spec
