@@ -11,4 +11,8 @@ x-build-javascript:
 # 	cd test/javascript/ && \
 # 	  npm link ../../clients/javascript/generated/
 
-.PHONY: x-build-javascript
+x-post-init-spec:
+	python3 scripts/post-init-spec.py stage/specification.yml
+
+
+.PHONY: x-build-javascript x-post-init-spec
