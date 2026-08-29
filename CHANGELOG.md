@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgrade OpenAPI Generator to 7.24.0
 - Upgrade Pinterest API spec to 5.28.0
 
+### Fixed
+- Fix helidon generator by sanitising query_catalogs_report_stats_parameters in spec
+
 ## 2.0.0 - 2026-01-31
 ### Added
 - Add contact details to Swaggy C config file
