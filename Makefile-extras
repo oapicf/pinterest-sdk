@@ -20,5 +20,14 @@ x-build-javascript:
 # that's what's filled in here.
 x-post-init-spec:
 	yq -i '.components.schemas.AdsAnalyticsCreateAsyncRequest.properties.campaign_objective_types.items = {"$$ref": "#/components/schemas/CampaignObjectiveType"}' stage/specification.yml
+	# openapi-generator's javascript generator doesn't support `anyOf` schemas at all
+	# (its model template literally emits `// TODO: add anyof model support` and no
+	# class), yet still generates a test spec that does `new Model()` on it, so any
+	# anyOf-typed property breaks `test-javascript`. AdAccountsAudienceRule.percentage
+	# (anyOf: [string, integer]) is the only all-primitive anyOf/oneOf in the whole
+	# spec; collapsed to a single type here so it's a plain property instead of a
+	# synthesized (and broken) named model. Sibling numeric fields in the same schema
+	# (retention_days, engager_type) are plain `integer`, so this follows that.
+	yq -i 'del(.components.schemas.AdAccountsAudienceRule.properties.percentage.anyOf) | .components.schemas.AdAccountsAudienceRule.properties.percentage.type = "integer"' stage/specification.yml
 
 .PHONY: x-build-javascript x-post-init-spec
