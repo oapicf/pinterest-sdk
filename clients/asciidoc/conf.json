@@ -1,4 +1,5 @@
 {
   "gitUserId": "oapicf",
-  "gitRepoId": "pinterest-sdk"
+  "gitRepoId": "pinterest-sdk",
+  "templateDir": "/local/clients/asciidoc/templates"
 }

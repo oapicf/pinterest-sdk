@@ -1,0 +1,68 @@
+{{!
+Local override of openapi-generator's bundled asciidoc model.mustache
+(github.com/OpenAPITools/openapi-generator, v7.24.0, modules/openapi-generator/
+src/main/resources/asciidoc/model.mustache), wired in via
+clients/asciidoc/conf.json's "templateDir". This is a Mustache comment, so it
+produces no output -- see the enum-values table further down for the actual
+change, flagged with an inline comment there.
+
+Summary: the enum-values row's tablecellcontent-wrapped value lookup can't
+resolve that lambda from inside the enum-values iteration, because each
+iteration's context there is a raw string, not a map/bean -- so the lookup
+doesn't walk up to the parent context and throws NullPointerException: Null
+context for variable 'tablecellcontent', which aborts the whole index.adoc
+generation. Confirmed via openapi-generator issue #12266, a same-root-cause
+bug report against this exact model.mustache enum-rendering code path.
+Dropping the lambda for this one row means enum values print unescaped,
+which only matters if a value contains a literal pipe character (breaks an
+AsciiDoc table cell) -- not a concern for this spec's enums (plain
+identifiers). Everything else in this file is untouched, byte-for-byte from
+upstream.
+}}
+[#models]
+== Models
+
+{{#models}}
+    {{#model}}
+
+[#{{classname}}]
+=== _{{classname}}_ {{title}}
+
+{{unescapedDescription}}
+
+
+{{^allowableValues}}
+[.fields-{{classname}}]
+[cols="2,1,1,2,4,1"]
+|===
+| Field Name| Required| Nullable | Type| Description | Format
+
+{{#vars}}
+| {{#tablecellcontent}}{{baseName}}{{/tablecellcontent}}
+| {{#required}}X{{/required}}
+| {{#isNullable}}X{{/isNullable}}
+| {{#isModel}}<<{{ dataType }}>>{{/isModel}} {{^container}}{{^allowableValues}} {{^isModel}}{{ dataType }}{{/isModel}}{{/allowableValues}}{{#allowableValues}}{{^allowableValues.empty}}<<{{ dataType }}>>{{/allowableValues.empty}}{{/allowableValues}} {{/container}} {{#isContainer}} of <<{{complexType}}>>{{/isContainer}}
+| {{#tablecellcontent}}{{description}}{{/tablecellcontent}}
+| {{#tablecellcontent}}{{{dataFormat}}} {{#isEnum}}_Enum:_ {{#_enum}}{{this}}, {{/_enum}}{{/isEnum}} {{^isEnum}}{{^container}}{{^allowableValues.empty}} {{#allowableValues.values}}{{this}}, {{/allowableValues.values}} {{/allowableValues.empty}}{{/container}}{{/isEnum}}{{/tablecellcontent}}
+
+{{/vars}}
+|===
+{{/allowableValues}}
+
+{{#allowableValues}}
+
+[.fields-{{classname}}]
+[cols="1"]
+|===
+| Enum Values
+
+{{#allowableValues.values}}
+{{! local fix: dropped the tablecellcontent wrapper here -- see file header }}
+| {{this}}
+{{/allowableValues.values}}
+
+|===
+{{/allowableValues}}
+
+    {{/model}}
+{{/models}}
