@@ -11,37 +11,4 @@ x-build-javascript:
 # 	cd test/javascript/ && \
 # 	  npm link ../../clients/javascript/generated/
 
-x-post-init-spec:
-	# Pinterest's spec omits `items` on AdsAnalyticsCreateAsyncRequest.campaign_objective_types
-	# (a `type: array` property with no items schema), which openapi-generator's spec
-	# validation rejects with "attribute ...campaign_objective_types.items is missing".
-	# The property name and description (WEB_SESSIONS etc.) match the existing
-	# CampaignObjectiveType enum used elsewhere in the spec for the singular field, so
-	# that's what's filled in here.
-	yq -i '.components.schemas.AdsAnalyticsCreateAsyncRequest.properties.campaign_objective_types.items = {"$$ref": "#/components/schemas/CampaignObjectiveType"}' stage/specification.yml
-	# openapi-generator's javascript generator doesn't support `anyOf` schemas at all
-	# (its model template literally emits `// TODO: add anyof model support` and no
-	# class), yet still generates a test spec that does `new Model()` on it, so any
-	# anyOf-typed property breaks `test-javascript`. AdAccountsAudienceRule.percentage
-	# (anyOf: [string, integer]) is the only all-primitive anyOf/oneOf in the whole
-	# spec; collapsed to a single type here so it's a plain property instead of a
-	# synthesized (and broken) named model. Sibling numeric fields in the same schema
-	# (retention_days, engager_type) are plain `integer`, so this follows that.
-	yq -i 'del(.components.schemas.AdAccountsAudienceRule.properties.percentage.anyOf) | .components.schemas.AdAccountsAudienceRule.properties.percentage.type = "integer"' stage/specification.yml
-	# query_catalogs_report_stats_parameters is a query parameter whose schema is a
-	# bare $$ref to CatalogsReportStatsParameters -- a whole oneOf-discriminated object
-	# used directly as a query param's type, which is unusual (query params are
-	# normally scalars; passing a structured object means the caller JSON-encodes it
-	# into the query string). openapi-generator's java-helidon-server generator
-	# doesn't handle that: JavaHelidonCommonCodegen$$GenericTypeDeclarations.register
-	# ends up with a null baseType for this parameter and throws
-	# NullPointerException: Cannot invoke "Comparable.compareTo(Object)" while
-	# building the CatalogReports API file, aborting generate-all entirely. Tried the
-	# OpenAPI-correct fix first (parameter `content` instead of bare `schema`, which
-	# is exactly what OpenAPI defines for "value is a JSON-serialized instance of a
-	# schema") -- same crash. Only collapsing to a plain `type: string` avoids it, so
-	# that's what's here; the schema reference that's lost is preserved in the
-	# description text instead.
-	yq -i '.components.parameters.query_catalogs_report_stats_parameters.description = "Contains the parameters for report identification, as a JSON-encoded object matching the CatalogsReportStatsParameters schema (e.g. {\"catalog_type\":\"RETAIL\",...})." | .components.parameters.query_catalogs_report_stats_parameters.schema = {"type": "string"}' stage/specification.yml
-
-.PHONY: x-build-javascript x-post-init-spec
+.PHONY: x-build-javascript
